@@ -7,7 +7,8 @@ const path = require('path');
 const runSequence = require('run-sequence');
 
 const buildScssTask = require('./build-scss-task');
-const inlineResources = require('./inline-resources').inlineResourcesForDirectory;
+const inlineResources = require('./inline-resources')
+  .inlineResourcesForDirectory;
 const bundleSrc = require('./src-bundler').bundlePrimarySrc;
 const compileSrc = require('./src-compiler').compile;
 const composeRelease = require('./release-composer').composeRelease;
@@ -64,10 +65,14 @@ gulp.task('copy', ['copy:package-version']);
 
 gulp.task('copy:src', ['clean'], function() {
   return gulp
-    .src([path.join(libDir, '/**/*'),
-          `!${path.join(libDir + '/build-tools')}`,
-          `!${path.join(libDir + '/build-tools/**')}`],
-          { base: libDir })
+    .src(
+      [
+        path.join(libDir, '/**/*'),
+        `!${path.join(libDir + '/build-tools')}`,
+        `!${path.join(libDir + '/build-tools/**')}`
+      ],
+      { base: libDir }
+    )
     .pipe(gulp.dest(buildDir));
 });
 
@@ -126,7 +131,7 @@ gulp.task('lib:assets', function() {
         if (err) {
           chalk.red(`ERROR: ${err.message}`);
         } else {
-          chalk.green("Assets finished succesfully");
+          chalk.green('Assets finished succesfully');
           resolve();
         }
       }
@@ -182,6 +187,7 @@ gulp.task('polish', () => {
       'polish:clean:dirs',
       'polish:move:release',
       'polish:clean:release',
+      'polish:move:readme',
       function(err) {
         if (err) {
           chalk.red(`ERROR: ${err.message}`);
@@ -189,15 +195,12 @@ gulp.task('polish', () => {
           resolve();
         }
       }
-    )
+    );
   });
 });
 
 gulp.task('polish:clean:dirs', () => {
-  return del([
-    buildDir,
-    bundlesDir,
-    packagesDir]);
+  return del([buildDir, bundlesDir, packagesDir]);
 });
 
 gulp.task('polish:move:release', () => {
@@ -206,6 +209,10 @@ gulp.task('polish:move:release', () => {
 
 gulp.task('polish:clean:release', () => {
   return del([path.join(distDir, releaseDirName)]);
+});
+
+gulp.task('polish:move:readme', () => {
+  return gulp.src(`${rootDir}/README.md`).pipe(gulp.dest(distDir));
 });
 
 gulp.task('default', ['build']);
@@ -221,6 +228,6 @@ function deleteFolders(folders) {
  * replaces slashes by back slashes
  * @param filePath
  */
-function replaceSlashes(filePath){
+function replaceSlashes(filePath) {
   return filePath.replace(/\\/g, '/');
 }

@@ -7,7 +7,7 @@ in order to tear down multiple services at once on a given condition.
 
 Useful if you manage subscriptions or other state inside services that should be cleaned up simultanously e.g. on logout
 
-Simply implement the Disposable interface and add the service to the _DISPOSABLE_ injection token list using `multi: true`
+Simply implement the _Disposable_ interface and add the service to the _DISPOSABLES_ injection token list using `multi: true`
 Then invkode the dispose function on the provided _DisposableService_
 
 ## Usage
@@ -36,7 +36,7 @@ Add your disposable service to the module:
     }
   ]
 })
-export class AppModule {}
+export class MyModule {}
 ```
 
 use the DisposableService to tear down all disposables:

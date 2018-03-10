@@ -1,11 +1,21 @@
 {
   "name": "ng-disposable",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "repository": {
     "type": "git",
-    "url": "url"
+    "url": "https://github.com/phl3x0r/ng-disposable"
   },
-  "keywords": ["angular"],
+  "bugs": {
+    "email": "wispster@gmail.com",
+    "url": "https://github.com/phl3x0r/ng-disposable/issues"
+  },
+  "author": {
+    "name": "Niklas Hegnelt",
+    "email": "wispster@gmail.com",
+    "url": "https://github.com/phl3x0r"
+  },
+  "description": "A library for setting up and disposing services",
+  "keywords": ["angular", "dispose", "disposable"],
   "license": "MIT",
   "main": "./bundles/ng-disposable.umd.js",
   "es2015": "./esm2015/ng-disposable.js",
