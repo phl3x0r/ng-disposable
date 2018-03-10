@@ -10,7 +10,7 @@ export class DisposableService {
     private disposables: Disposable[]
   ) {}
 
-  public dispose<T>() {
+  public dispose(): number {
     if (!!this.disposables && this.disposables.length > 0) {
       for (const disposable of this.disposables) {
         disposable.dispose();

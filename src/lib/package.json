@@ -5,9 +5,7 @@
     "type": "git",
     "url": "url"
   },
-  "keywords": [
-    "angular"
-  ],
+  "keywords": ["angular"],
   "license": "MIT",
   "main": "./bundles/ng-disposable.umd.js",
   "es2015": "./esm2015/ng-disposable.js",
