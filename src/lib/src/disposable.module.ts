@@ -1,6 +1,6 @@
+import { DisposableService } from './disposable.service';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DisposableService } from '.';
 
 @NgModule({})
 export class DisposableModule {

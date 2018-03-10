@@ -1,4 +1,4 @@
-import { InjectionToken } from '@angular/core/src/di/injection_token';
+import { InjectionToken } from '@angular/core';
 import { Disposable } from './disposable.interface';
 
 export const DISPOSABLES = new InjectionToken<Disposable>('DISPOSABLE');
